@@ -48,7 +48,7 @@ def main():
                     "Personalpronomen": pronoun,
                     "Modo": current_modo,
                     "Tempo": tense_name,
-                    "Konjugation": verb
+                    "Konjugation": verb.replace(' ', '')
                 })
 
     # DataFrame bauen
@@ -59,7 +59,7 @@ def main():
 
     # Erste CSV (komplett)
     csv_file1 = f"{args.infinitivo}_konjugation_long.csv"
-    df.to_csv(csv_file1, encoding="utf-8-sig", index=False)
+    # df.to_csv(csv_file1, encoding="utf-8-sig", index=False) <-- for debug
 
     # Zweite CSV (mit Include-Filter)
     df2 = df.copy()
