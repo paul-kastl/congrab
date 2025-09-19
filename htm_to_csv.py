@@ -3,30 +3,25 @@ import pandas as pd
 import argparse
 
 def main():
-
     parser = argparse.ArgumentParser()
-    #parser.add_argument('--test', action='store_true', help="Aktiviert den Testmodus.")
-    #parser.add_argument('--listparams', action='store_true', help="Listet die Parameter für die ausgewählten Versuche")
-    parser.add_argument('--verb', type=str, default = 'ser', help="Zu konjugierendes Verb")
+    parser.add_argument('--infinitivo', type=str, default='ser', help="Zu konjugierendes Verb")
+    parser.add_argument('--translation', type=str, default='keine Übersetzung', help="die Übersetzung des Infinitivs ins Deutsche")
     args = parser.parse_args()
 
     # Pfad zur heruntergeladenen HTML-Datei
-    html_file = f"{args.verb}.htm"
+    html_file = f"{args.infinitivo}.htm"
 
     with open(html_file, "r", encoding="utf-8") as f:
         soup = BeautifulSoup(f, "html.parser")
 
     rows = []
-
     current_modo = None
 
-    # Wir laufen durch die Kinder der großen Konjugationsbox
+    # Durch die Struktur der Konjugationstabelle laufen
     for element in soup.select("div.result-block-api")[0].descendants:
-        # Wenn wir eine Modus-Überschrift finden (h4)
         if element.name == "h4":
             current_modo = element.get_text(strip=True)
 
-        # Falls es eine Zeitform-Box ist
         if element.name == "div" and "blue-box-wrap" in element.get("class", []):
             tense_name = element.find("p")
             if tense_name is None:
@@ -34,11 +29,9 @@ def main():
             tense_name = tense_name.get_text(strip=True)
 
             for li in element.select("ul.wrap-verbs-listing > li"):
-                # Personalpronomen extrahieren
                 pronoun_tag = li.find("i", class_="graytxt")
                 pronoun = pronoun_tag.get_text(strip=True) if pronoun_tag else "(ohne Pronomen)"
 
-                # Verbteile (inkl. zusammengesetzter Formen)
                 verb_parts = []
                 for i in li.find_all("i"):
                     cls = " ".join(i.get("class", []))
@@ -53,15 +46,30 @@ def main():
                     "Konjugation": verb
                 })
 
-    # DataFrame bauen (langes Format)
+    # DataFrame bauen
     df = pd.DataFrame(rows)
 
-    # CSV speichern
-    csv_file = "ser_konjugation_long.csv"
-    df.to_csv(csv_file, encoding="utf-8-sig", index=False)
+    # "tu" und "vós" entfernen
+    df = df[~df["Personalpronomen"].isin(["tu", "vós"])]
 
-    print(f"CSV wurde gespeichert unter: {csv_file}")
+    # Erste CSV (langes Format, wie bisher)
+    csv_file1 = f"{args.infinitivo}_konjugation_long.csv"
+    df.to_csv(csv_file1, encoding="utf-8-sig", index=False)
+
+    # Zweite CSV mit neuen Spalten
+    df2 = df.copy()
+    df2.insert(0, "Infinitivo", args.infinitivo)
+    df2.insert(1, "Übersetzung", args.translation)
+
+    # Spaltenreihenfolge anpassen
+    df2 = df2.rename(columns={"Personalpronomen": "pronome pessoal"})
+    df2 = df2[["Infinitivo", "Übersetzung", "pronome pessoal", "Tempo", "Modo", "Konjugation"]]
+
+    csv_file2 = f"{args.infinitivo}_konjugation_extended.csv"
+    df2.to_csv(csv_file2, encoding="utf-8-sig", index=False)
+
+    print(f"CSV 1 gespeichert unter: {csv_file1}")
+    print(f"CSV 2 gespeichert unter: {csv_file2}")
 
 if __name__ == "__main__":
     main()
-
