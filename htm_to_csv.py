@@ -16,42 +16,49 @@ def main():
     with open(html_file, "r", encoding="utf-8") as f:
         soup = BeautifulSoup(f, "html.parser")
 
-    # Dictionary: { Personalpronomen: { Zeitform: Konjugation } }
-    data = {}
+    rows = []
 
-    # Alle Zeitform-Blöcke finden
-    for box in soup.select("div.blue-box-wrap"):
-        tense = box.find("p")
-        if tense is None:
-            continue
-        tense_name = tense.get_text(strip=True)
+    current_modo = None
 
-        # Alle Zeilen (li)
-        for li in box.select("ul.wrap-verbs-listing > li"):
-            # Pronomen (falls vorhanden)
-            pronoun_tag = li.find("i", class_="graytxt")
-            pronoun = pronoun_tag.get_text(strip=True) if pronoun_tag else ""
+    # Wir laufen durch die Kinder der großen Konjugationsbox
+    for element in soup.select("div.result-block-api")[0].descendants:
+        # Wenn wir eine Modus-Überschrift finden (h4)
+        if element.name == "h4":
+            current_modo = element.get_text(strip=True)
 
-            # eigentliche Verbform(en) zusammensetzen
-            verb_parts = [i.get_text(strip=True) for i in li.find_all("i") if "verbtxt" in " ".join(i.get("class", []))]
-            verb = " ".join(verb_parts).strip()
+        # Falls es eine Zeitform-Box ist
+        if element.name == "div" and "blue-box-wrap" in element.get("class", []):
+            tense_name = element.find("p")
+            if tense_name is None:
+                continue
+            tense_name = tense_name.get_text(strip=True)
 
-            # Wenn es kein Personalpronomen gibt (z.B. Infinitivo, Gerúndio),
-            # benutzen wir einfach den Infinitiv/Partizip als "Pronomen"-Key
-            if not pronoun:
-                pronoun = "(ohne Pronomen)"
+            for li in element.select("ul.wrap-verbs-listing > li"):
+                # Personalpronomen extrahieren
+                pronoun_tag = li.find("i", class_="graytxt")
+                pronoun = pronoun_tag.get_text(strip=True) if pronoun_tag else "(ohne Pronomen)"
 
-            if pronoun not in data:
-                data[pronoun] = {}
-            data[pronoun][tense_name] = verb
+                # Verbteile (inkl. zusammengesetzter Formen)
+                verb_parts = []
+                for i in li.find_all("i"):
+                    cls = " ".join(i.get("class", []))
+                    if "verbtxt" in cls or "auxgraytxt" in cls:
+                        verb_parts.append(i.get_text(strip=True))
+                verb = " ".join(verb_parts).strip()
 
-    # In DataFrame umwandeln
-    df = pd.DataFrame.from_dict(data, orient="index")
-    df.index.name = "Personalpronomen"
+                rows.append({
+                    "Personalpronomen": pronoun,
+                    "Modo": current_modo,
+                    "Tempo": tense_name,
+                    "Konjugation": verb
+                })
+
+    # DataFrame bauen (langes Format)
+    df = pd.DataFrame(rows)
 
     # CSV speichern
-    csv_file = "ser_konjugation.csv"
-    df.to_csv(csv_file, encoding="utf-8-sig")
+    csv_file = "ser_konjugation_long.csv"
+    df.to_csv(csv_file, encoding="utf-8-sig", index=False)
 
     print(f"CSV wurde gespeichert unter: {csv_file}")
 

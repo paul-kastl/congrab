@@ -1,0 +1,103 @@
+﻿Personalpronomen,Modo,Tempo,Konjugation
+eu,Indicativo,Presente,sou
+tu,Indicativo,Presente,és
+ele/ela/você,Indicativo,Presente,é
+nós,Indicativo,Presente,somos
+vós,Indicativo,Presente,sois
+eles/elas/vocês,Indicativo,Presente,são
+eu,Indicativo,Pretérito Perfeito,fui
+tu,Indicativo,Pretérito Perfeito,foste
+ele/ela/você,Indicativo,Pretérito Perfeito,foi
+nós,Indicativo,Pretérito Perfeito,fomos
+vós,Indicativo,Pretérito Perfeito,fostes
+eles/elas/vocês,Indicativo,Pretérito Perfeito,foram
+eu,Indicativo,Pretérito Imperfeito,era
+tu,Indicativo,Pretérito Imperfeito,eras
+ele/ela/você,Indicativo,Pretérito Imperfeito,era
+nós,Indicativo,Pretérito Imperfeito,éramos
+vós,Indicativo,Pretérito Imperfeito,éreis
+eles/elas/vocês,Indicativo,Pretérito Imperfeito,eram
+eu,Indicativo,Pretérito Mais-que-Perfeito,fora
+tu,Indicativo,Pretérito Mais-que-Perfeito,foras
+ele/ela/você,Indicativo,Pretérito Mais-que-Perfeito,fora
+nós,Indicativo,Pretérito Mais-que-Perfeito,fôramos
+vós,Indicativo,Pretérito Mais-que-Perfeito,fôreis
+eles/elas/vocês,Indicativo,Pretérito Mais-que-Perfeito,foram
+eu,Indicativo,Pretérito Perfeito Composto,tenho sido
+tu,Indicativo,Pretérito Perfeito Composto,tens sido
+ele/ela/você,Indicativo,Pretérito Perfeito Composto,tem sido
+nós,Indicativo,Pretérito Perfeito Composto,temos sido
+vós,Indicativo,Pretérito Perfeito Composto,tendes sido
+eles/elas/vocês,Indicativo,Pretérito Perfeito Composto,têm sido
+eu,Indicativo,Pretérito Mais-que-Perfeito Composto,tinha sido
+tu,Indicativo,Pretérito Mais-que-Perfeito Composto,tinhas sido
+ele/ela/você,Indicativo,Pretérito Mais-que-Perfeito Composto,tinha sido
+nós,Indicativo,Pretérito Mais-que-Perfeito Composto,tínhamos sido
+vós,Indicativo,Pretérito Mais-que-Perfeito Composto,tínheis sido
+eles/elas/vocês,Indicativo,Pretérito Mais-que-Perfeito Composto,tinham sido
+eu,Indicativo,Pretérito Mais-que-Perfeito Anterior,tivera sido
+tu,Indicativo,Pretérito Mais-que-Perfeito Anterior,tiveras sido
+ele/ela/você,Indicativo,Pretérito Mais-que-Perfeito Anterior,tivera sido
+nós,Indicativo,Pretérito Mais-que-Perfeito Anterior,tivéramos sido
+vós,Indicativo,Pretérito Mais-que-Perfeito Anterior,tivéreis sido
+eles/elas/vocês,Indicativo,Pretérito Mais-que-Perfeito Anterior,tiveram sido
+eu,Indicativo,Futuro do Presente Simples,serei
+tu,Indicativo,Futuro do Presente Simples,serás
+ele/ela/você,Indicativo,Futuro do Presente Simples,será
+nós,Indicativo,Futuro do Presente Simples,seremos
+vós,Indicativo,Futuro do Presente Simples,sereis
+eles/elas/vocês,Indicativo,Futuro do Presente Simples,serão
+eu,Indicativo,Futuro do Presente Composto,terei sido
+tu,Indicativo,Futuro do Presente Composto,terás sido
+ele/ela/você,Indicativo,Futuro do Presente Composto,terá sido
+nós,Indicativo,Futuro do Presente Composto,teremos sido
+vós,Indicativo,Futuro do Presente Composto,tereis sido
+eles/elas/vocês,Indicativo,Futuro do Presente Composto,terão sido
+eu,Conjuntivo / Subjuntivo,Presente,seja
+tu,Conjuntivo / Subjuntivo,Presente,sejas
+ele/ela/você,Conjuntivo / Subjuntivo,Presente,seja
+nós,Conjuntivo / Subjuntivo,Presente,sejamos
+vós,Conjuntivo / Subjuntivo,Presente,sejais
+eles/elas/vocês,Conjuntivo / Subjuntivo,Presente,sejam
+eu,Conjuntivo / Subjuntivo,Pretérito Perfeito,tenha sido
+tu,Conjuntivo / Subjuntivo,Pretérito Perfeito,tenhas sido
+ele/ela/você,Conjuntivo / Subjuntivo,Pretérito Perfeito,tenha sido
+nós,Conjuntivo / Subjuntivo,Pretérito Perfeito,tenhamos sido
+vós,Conjuntivo / Subjuntivo,Pretérito Perfeito,tenhais sido
+eles/elas/vocês,Conjuntivo / Subjuntivo,Pretérito Perfeito,tenham sido
+eu,Conjuntivo / Subjuntivo,Pretérito Imperfeito,fosse
+tu,Conjuntivo / Subjuntivo,Pretérito Imperfeito,fosses
+ele/ela/você,Conjuntivo / Subjuntivo,Pretérito Imperfeito,fosse
+nós,Conjuntivo / Subjuntivo,Pretérito Imperfeito,fôssemos
+vós,Conjuntivo / Subjuntivo,Pretérito Imperfeito,fôsseis
+eles/elas/vocês,Conjuntivo / Subjuntivo,Pretérito Imperfeito,fossem
+eu,Conjuntivo / Subjuntivo,Pretérito Mais-que-Perfeito Composto,tivesse sido
+tu,Conjuntivo / Subjuntivo,Pretérito Mais-que-Perfeito Composto,tivesses sido
+ele/ela/você,Conjuntivo / Subjuntivo,Pretérito Mais-que-Perfeito Composto,tivesse sido
+nós,Conjuntivo / Subjuntivo,Pretérito Mais-que-Perfeito Composto,tivéssemos sido
+vós,Conjuntivo / Subjuntivo,Pretérito Mais-que-Perfeito Composto,tivésseis sido
+eles/elas/vocês,Conjuntivo / Subjuntivo,Pretérito Mais-que-Perfeito Composto,tivessem sido
+eu,Conjuntivo / Subjuntivo,Futuro,for
+tu,Conjuntivo / Subjuntivo,Futuro,fores
+ele/ela/você,Conjuntivo / Subjuntivo,Futuro,for
+nós,Conjuntivo / Subjuntivo,Futuro,formos
+vós,Conjuntivo / Subjuntivo,Futuro,fordes
+eles/elas/vocês,Conjuntivo / Subjuntivo,Futuro,forem
+eu,Conjuntivo / Subjuntivo,Futuro Composto,tiver sido
+tu,Conjuntivo / Subjuntivo,Futuro Composto,tiveres sido
+ele/ela/você,Conjuntivo / Subjuntivo,Futuro Composto,tiver sido
+nós,Conjuntivo / Subjuntivo,Futuro Composto,tivermos sido
+vós,Conjuntivo / Subjuntivo,Futuro Composto,tiverdes sido
+eles/elas/vocês,Conjuntivo / Subjuntivo,Futuro Composto,tiverem sido
+eu,Condicional,Futuro do Pretérito Simples,seria
+tu,Condicional,Futuro do Pretérito Simples,serias
+ele/ela/você,Condicional,Futuro do Pretérito Simples,seria
+nós,Condicional,Futuro do Pretérito Simples,seríamos
+vós,Condicional,Futuro do Pretérito Simples,seríeis
+eles/elas/vocês,Condicional,Futuro do Pretérito Simples,seriam
+eu,Condicional,Futuro do Pretérito Composto,teria sido
+tu,Condicional,Futuro do Pretérito Composto,terias sido
+ele/ela/você,Condicional,Futuro do Pretérito Composto,teria sido
+nós,Condicional,Futuro do Pretérito Composto,teríamos sido
+vós,Condicional,Futuro do Pretérito Composto,teríeis sido
+eles/elas/vocês,Condicional,Futuro do Pretérito Composto,teriam sido
