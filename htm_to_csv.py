@@ -6,6 +6,11 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--infinitivo', type=str, default='ser', help="Zu konjugierendes Verb")
     parser.add_argument('--translation', type=str, default='keine Übersetzung', help="die Übersetzung des Infinitivs ins Deutsche")
+    parser.add_argument(
+    '--include',
+    action='append',
+    help="Liste von Modo:Tempo-Kombinationen, mehrfach angeben möglich (z.B. --include 'Indicativo:Presente' --include 'Indicativo:Pretérito Perfeito')"
+    )
     args = parser.parse_args()
 
     # Pfad zur heruntergeladenen HTML-Datei
@@ -52,21 +57,24 @@ def main():
     # "tu" und "vós" entfernen
     df = df[~df["Personalpronomen"].isin(["tu", "vós"])]
 
-    # Erste CSV (langes Format, wie bisher)
+    # Erste CSV (komplett)
     csv_file1 = f"{args.infinitivo}_konjugation_long.csv"
     df.to_csv(csv_file1, encoding="utf-8-sig", index=False)
 
-    # Zweite CSV mit neuen Spalten
+    # Zweite CSV (mit Include-Filter)
     df2 = df.copy()
     df2.insert(0, "Infinitivo", args.infinitivo)
     df2.insert(1, "Übersetzung", args.translation)
-
-    # Spaltenreihenfolge anpassen
     df2 = df2.rename(columns={"Personalpronomen": "pronome pessoal"})
     df2 = df2[["Infinitivo", "Übersetzung", "pronome pessoal", "Tempo", "Modo", "Konjugation"]]
 
+    if args.include:
+        # Set aus erlaubten Kombinationen bilden
+        include_set = set(args.include)
+        df2 = df2[df2.apply(lambda r: f"{r['Modo']}:{r['Tempo']}" in include_set, axis=1)]
+
     csv_file2 = f"{args.infinitivo}_konjugation_extended.csv"
-    df2.to_csv(csv_file2, encoding="utf-8-sig", index=False)
+    df2.to_csv(csv_file2, encoding="utf-8-sig", index=False, header=False)
 
     print(f"CSV 1 gespeichert unter: {csv_file1}")
     print(f"CSV 2 gespeichert unter: {csv_file2}")
