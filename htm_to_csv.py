@@ -76,7 +76,7 @@ def main():
     csv_file2 = f"{args.infinitivo}_konjugation_extended.csv"
     df2.to_csv(csv_file2, encoding="utf-8-sig", index=False, header=False)
 
-    print(f"CSV 1 gespeichert unter: {csv_file1}")
+    #print(f"CSV 1 gespeichert unter: {csv_file1}")
     print(f"CSV 2 gespeichert unter: {csv_file2}")
 
 if __name__ == "__main__":
