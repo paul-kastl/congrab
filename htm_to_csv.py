@@ -72,8 +72,11 @@ def main():
         # Set aus erlaubten Kombinationen bilden
         include_set = set(args.include)
         df2 = df2[df2.apply(lambda r: f"{r['Modo']}:{r['Tempo']}" in include_set, axis=1)]
-
-    csv_file2 = f"{args.infinitivo}_konjugation_extended.csv"
+    
+    #print(args.include)
+    filename_extension = "_".join(args.include)
+    filename_extension = filename_extension.replace(":", " - ")
+    csv_file2 = f"{args.infinitivo}_{filename_extension}.csv"
     df2.to_csv(csv_file2, encoding="utf-8-sig", index=False, header=False)
 
     #print(f"CSV 1 gespeichert unter: {csv_file1}")
