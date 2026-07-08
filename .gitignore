@@ -119,3 +119,8 @@ dmypy.json
 
 #Pycharm IDE
 .idea
+
+# Die htmls und die csvs müssen nicht versioniert werden, da sie automatisch generiert werden
+*.csv
+*.htm
+*.html
